@@ -1,23 +1,44 @@
 var canvas = new fabric.Canvas('myCanvas');
- var x= document.getElementById("myAudio");
 
-function new_image()
+player_x = 10;
+player_y = 10;
+
+block_image_width = 30;
+block_image_height = 30;
+
+var player_object= "";
+var block_image_object= "";
+
+function player_update()
 {
-fabric.Image.fromURL("BirthdayImage.jpg", function(Img)
-{
-block_image_object =Img;
+	fabric.Image.fromURL("https://i.postimg.cc/zDwfFdYY/player.png", function(Img) {
+	player_object = Img;
 
+	player_object.scaleToWidth(150);
+	player_object.scaleToHeight(140);
+	player_object.set({
+	top:player_y,
+	left:player_x
+	});
+	canvas.add(player_object);
 
-block_image_object.scaleToWidth(700);
-block_image_object.scaleToHeight(510);
-block_image_object.set({
-top:0,
-left:0
-});
-canvas.add(block_image_object);
-});	
+	});
 }
 
-function playsound(){
-	x.play();
+function new_image(get_image)
+{
+	fabric.Image.fromURL(get_image, function(Img) {
+	block_image_object = Img;
+
+	block_image_object.scaleToWidth(block_image_width);
+	block_image_object.scaleToHeight(block_image_height);
+	block_image_object.set({
+	top:player_y,
+	left:player_x
+	});
+	canvas.add(block_image_object);
+
+	});
+
 }
+
